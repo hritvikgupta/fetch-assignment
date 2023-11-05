@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Offers Search</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 40px;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      input[type="text"] {
+        padding: 10px 15px;
+        width: 100%;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      hr {
+        margin: 40px 0;
+      }
+
+      p {
+        background-color: #f9f9f9;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+        border-left: 5px solid #007bff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Search for Offers</h2>
+      <form action="/" method="post">
+        <input
+          type="text"
+          name="query"
+          placeholder="Enter your search query"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+      <hr />
+      {% if results %} {% for offer, match_type, score in results %}
+      <p>
+        <strong>Offer:</strong> {{ offer }} | <strong>Match Type:</strong> {{
+        match_type }} | <strong>Similarity Score:</strong> {{
+        '%.2f'|format(score) }}
+      </p>
+      {% endfor %} {% elif results == [] %}
+      <p>No matching offers found for your query.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
