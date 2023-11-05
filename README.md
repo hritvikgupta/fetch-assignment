@@ -16,7 +16,7 @@ This Flask application enables users to search for special offers based on vario
 
 Before you can run the application, ensure you have Python installed on your system.
 
-To get started, clone this repository to your local machine:
+To get started, clone this repository to your local machine: 
 
 ```bash
 git clone https://your-repository-link
@@ -30,6 +30,7 @@ flask run
 
 Either if above doesn't work just run python app.py and it run the application on local terminal for output to be displayed.
 ```
+More Instructions to run locally is on: https://github.com/hritvikgupta/fetch-assignment/blob/main/Instructions.txt
 The application will start running on http://localhost:5000. Navigate to this address in your web browser to use the application.
 
 ```bash
