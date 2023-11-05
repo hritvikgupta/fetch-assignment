@@ -15,6 +15,12 @@ offers_model.vectorizer.fit(all_texts)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """
+    The index route that handles the search functionality. On a POST request, it gets the
+    user's query, searches for relevant offers, calculates similarity scores, sorts the results
+    by score, and renders them on the index.html page. On a GET request, it simply renders the
+    page without results.
+    """
     if request.method == 'POST':
         query = request.form['query'].strip()
         results = offers_model.search_offers(query)

@@ -2,26 +2,47 @@
 <html>
   <head>
     <title>Offers Search</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --primary-color: #0056b3;
+        --hover-color: #003a70;
+        --background-color: #f4f4f4;
+        --text-color: #333;
+        --container-bg: #fff;
+        --border-color: #ddd;
+        --button-bg-color: #007bff;
+        --button-text-color: #fff;
+        --alert-bg-color: #f9f9f9;
+        --alert-border-color: var(--primary-color);
+        --results-max-height: 400px;
+      }
+
       body {
-        font-family: "Arial", sans-serif;
-        background-color: #f4f4f4;
+        font-family: "Roboto", sans-serif;
+        background-color: var(--background-color);
         margin: 0;
         padding: 0;
+        color: var(--text-color);
+        font-size: 16px;
+        line-height: 1.6;
       }
 
       .container {
         max-width: 800px;
         margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        background-color: var(--container-bg);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
       }
 
       h2 {
         text-align: center;
-        color: #333;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
       }
 
       form {
@@ -29,42 +50,64 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        gap: 10px; /* spacing between form items */
       }
 
       input[type="text"] {
-        padding: 10px 15px;
-        width: 100%;
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        font-size: 16px;
-        border-radius: 5px;
+        padding: 15px 20px;
+        width: calc(100% - 40px); /* account for padding */
+        border: 1px solid var(--border-color);
+        font-size: 18px;
+        border-radius: 4px;
       }
 
       button {
-        padding: 10px 15px;
-        background-color: #007bff;
-        color: #fff;
+        padding: 15px 20px;
+        background-color: var(--button-bg-color);
+        color: var(--button-text-color);
         border: none;
-        border-radius: 5px;
-        font-size: 16px;
+        border-radius: 4px;
+        font-weight: 500;
         cursor: pointer;
         transition: background-color 0.3s ease;
       }
 
       button:hover {
-        background-color: #0056b3;
+        background-color: var(--hover-color);
       }
 
       hr {
-        margin: 40px 0;
+        margin: 50px 0;
+      }
+
+      .results {
+        max-height: var(--results-max-height);
+        overflow-y: auto; /* Enable vertical scrolling */
+        padding-right: 10px; /* Adjust if needed */
       }
 
       p {
-        background-color: #f9f9f9;
-        padding: 10px 15px;
-        border-radius: 5px;
-        margin: 15px 0;
-        border-left: 5px solid #007bff;
+        background-color: var(--alert-bg-color);
+        padding: 15px 20px;
+        border-radius: 4px;
+        margin: 20px 0;
+        border-left: 5px solid var(--alert-border-color);
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px;
+          padding: 20px;
+        }
+
+        form {
+          width: 100%;
+        }
+
+        input[type="text"] {
+          width: 100%; /* full width on small screens */
+        }
       }
     </style>
   </head>
@@ -82,15 +125,17 @@
         <button type="submit">Search</button>
       </form>
       <hr />
-      {% if results %} {% for offer, match_type, score in results %}
-      <p>
-        <strong>Offer:</strong> {{ offer }} | <strong>Match Type:</strong> {{
-        match_type }} | <strong>Similarity Score:</strong> {{
-        '%.2f'|format(score) }}
-      </p>
-      {% endfor %} {% elif results == [] %}
-      <p>No matching offers found for your query.</p>
-      {% endif %}
+      <div class="results">
+        {% if results %} {% for offer, match_type, score in results %}
+        <p>
+          <strong>Offer:</strong> {{ offer }} | <strong>Match Type:</strong> {{
+          match_type }} | <strong>Similarity Score:</strong> {{
+          '%.2f'|format(score) }}
+        </p>
+        {% endfor %} {% elif results == [] %}
+        <p>No matching offers found for your query.</p>
+        {% endif %}
+      </div>
     </div>
   </body>
 </html>

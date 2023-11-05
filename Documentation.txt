@@ -1,0 +1,42 @@
+Workflow and NLP Methods Documentation
+
+1. Introduction
+    1.1. Purpose of the Document
+        - This document outlines the workflow and natural language processing (NLP) methods used in the Flask application designed for searching offers.
+    1.2. Scope
+        - The document covers the Flask app structure, data preprocessing, offer searching algorithm, and similarity scoring methods.
+    1.3. System Overview
+        - The Flask application allows users to search for offers based on a query. It uses NLP techniques to find and rank the relevant offers.
+
+2. Application Workflow
+    2.1. Initial Setup
+        - The application initializes by importing necessary libraries and modules, setting up the Flask app, and creating an instance of the `GetOffers` class.
+    2.2. Data Preparation
+        - All available offers are preprocessed and a TF-IDF vectorizer is fitted with the offer texts to prepare for cosine similarity scoring.
+    2.3. Routing and View Functions
+        - The index route (`/`) handles both GET and POST requests. GET renders the search page, while POST processes the search query and renders the results.
+
+3. NLP Methods and Search Algorithm
+    3.1. TF-IDF Vectorization
+        - The `TfidfVectorizer` from `sklearn.feature_extraction.text` transforms texts into a TF-IDF matrix for later similarity comparisons.
+    3.2. Cosine Similarity Scoring
+        - `linear_kernel` computes the cosine similarity scores between the query vector and the TF-IDF matrix of offer texts.
+    3.3. Enhanced Similarity Scoring
+        - The cosine similarity score is incremented if the query is a direct match within the offer texts.
+    3.4. Search Offers Function
+        - Searches for offers by matching categories, brands, and retailers using Pandas' string methods.
+        - Compiles results which include the offer, match type (e.g., "Category Match"), and later the similarity score.
+    3.5. spaCy Similarity
+        - Utilizes spaCy's `en_core_web_sm` model to compute semantic similarity scores between the query and offer texts.
+
+4. Data Models
+    4.1. The GetOffers Class
+        - This class Defines the structure and methods for searching offers and calculating similarity.
+    4.2. Data Sources
+        - `getDataset.py` is used to import the datasets: brands, categories, and offers, which are the backbone of the search functionality.
+        - In this file if you are locally then download the given dataset("https://drive.google.com/drive/folders/1U2INnOwc_sisGf6W97wcC7-fa2rXpiXu") into your computer system and include path in getDataset in file
+
+5. System Dependencies
+    5.1. Python Packages
+        - All the Python packages required to run the application, including `Flask`, `pandas`, `numpy`, `scikit-learn`, and `spacy` are in requirements.txt file
+   

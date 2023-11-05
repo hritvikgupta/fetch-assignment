@@ -11,6 +11,11 @@ class GetOffers():
         self.vectorizer = TfidfVectorizer(stop_words='english')
         
     def search_offers(self, query):
+        """
+        Search for offers based on a query. The method searches within product categories,
+        brands, and retailers to find matches. It returns a list of tuples containing the
+        offer and the type of match it found (Category Match, Brand Match, or Retailer Match).
+        """
         results = []
         matching_categories = categories[categories['PRODUCT_CATEGORY'].str.contains(query, case=False)]
         if not matching_categories.empty:
@@ -41,6 +46,11 @@ class GetOffers():
         return results
 
     def get_similarity_scores(self, query, texts):
+        """
+        Calculate similarity scores between the query and a list of texts using TF-IDF vectorization
+        and cosine similarity. It also adds a bias score if the query is a substring of the text to 
+        enhance the match quality.
+        """
         tfidf_matrix = self.vectorizer.transform(texts)
         query_vec = self.vectorizer.transform([query])
         cosine_similarities = linear_kernel(query_vec, tfidf_matrix).flatten()
@@ -50,6 +60,10 @@ class GetOffers():
         return np.clip(cosine_similarities, 0, 1)
 
     def get_spacy_similarity(self, query, texts):
+        """
+        Calculate similarity scores between the query and a list of texts using spaCy's built-in
+        similarity comparison, which is based on word embeddings.
+        """
         query_doc = nlp(query)
         similarities = [query_doc.similarity(nlp(text)) for text in texts]
         return similarities
