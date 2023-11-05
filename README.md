@@ -11,7 +11,7 @@ This Flask application enables users to search for special offers based on vario
 
 ## Installation
 
-Before you can run the application, ensure you have Python installed on your system. This application was developed using Python 3.x.
+Before you can run the application, ensure you have Python installed on your system.
 
 To get started, clone this repository to your local machine:
 
@@ -24,8 +24,19 @@ pip install -r requirements.txt
 
 To start the application, run the following command in your terminal:
 flask run
+
+Either if above doesn't work just run python app.py and it run the application on local terminal for output to be displayed.
 ```
 The application will start running on http://localhost:5000. Navigate to this address in your web browser to use the application.
+
+```bash
+In getDataset.py
+Rename the variable if you are running from local system
+brand = pd.read_csv("ADD BRAND CSV FILE PATH") 
+categories = pd.read_csv("ADD CATEGORY CSV FILE PATH")
+offers = pd.read_csv("ADD OFFERS CSV FILE PATH")
+
+```
 
 ## How It Works
 1. Data Preparation
