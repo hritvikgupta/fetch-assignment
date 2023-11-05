@@ -1,0 +1,32 @@
+Instructions to Run the Offers Search Application Locally
+---------------------------------------------------------
+
+Prerequisites:
+- Ensure you have Python installed on your system 
+- You should have pip available to install Python packages.
+
+Setup Steps:
+1. Clone the repository to your local machine using the following command:
+   git clone https://github.com/hritvikgupta/fetch-assignment
+
+2. Change directory to your project's folder:
+   cd path-to-your-repository-directory
+   Note: Replace 'path-to-your-repository-directory' with the path where your repository is located.
+
+3. Install the required dependencies:
+   pip install -r requirements.txt
+
+Running the Application:
+1. Set the FLASK_APP environment variable:
+   For Windows:
+   set FLASK_APP=app.py
+
+   For macOS/Linux:
+   export FLASK_APP=app.py
+
+2. Start the application with the following command:
+   flask run or if not then python run app.py (make sure you are in root directory file in terminal before writing this)
+
+3. Open your web browser and go to the following address to use the application:
+   http://localhost:5000
+

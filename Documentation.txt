@@ -1,4 +1,6 @@
 Workflow and NLP Methods Documentation
+Github Link to the repository: https://github.com/hritvikgupta/fetch-assignment
+Hosted version of website: https://flask-offer-app-07f47ab4cb1c.herokuapp.com/
 
 1. Introduction
     1.1. Purpose of the Document
