@@ -1,6 +1,7 @@
 # fetch-assignment
 ### Offers Search Flask Application
-#### Application is live on: https://flask-offer-app-07f47ab4cb1c.herokuapp.com
+#### Application is live on: https://flask-offer-app-a79411e7ba39.herokuapp.com
+
 ## Introduction
 This Flask application enables users to search for special offers based on various criteria such as product categories, brands, and retailers. It leverages Natural Language Processing (NLP) techniques to evaluate the relevance and similarity of offers to the user's search query. This python flask application is hosted on heroku.
 
